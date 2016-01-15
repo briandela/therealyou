@@ -28,6 +28,24 @@ then `remote.info.remoteAddress` would be set to `192.16.184.5`
 
 This plugin sets `request.info.remotePort` to the value of the `x-forwarded-port` header
 
+### Usage
+
+``` javascript
+const Hapi = require('hapi');
+
+const server = new Hapi.Server();
+server.connection();
+
+server.register(require('therealyou'), function (err) {
+
+    // Assuming no err, start server
+
+    server.start(function () {
+        // ..
+    });
+});
+```
+
 ## Acknowledgements
 
 `therealyou` is sponsored by [nearForm](http://nearform.com).

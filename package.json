@@ -1,6 +1,6 @@
 {
   "name": "therealyou",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hapi.js plugin for setting the remoteAddress and remotePort based on the X-Forwarded-For and X-Forwarded-Port headers",
   "main": "lib/index.js",
   "author": "Brian Delahunty <brian@briandela.com>",
