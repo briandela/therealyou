@@ -1,0 +1,34 @@
+{
+  "name": "therealyou",
+  "version": "1.0.0",
+  "description": "hapi.js plugin for setting the remoteAddress and remotePort based on the X-Forwarded-For and X-Forwarded-Port headers",
+  "main": "lib/index.js",
+  "author": "Brian Delahunty <brian@briandela.com>",
+  "scripts": {
+    "test": "lab -r lcov | node node_modules/coveralls/bin/coveralls.js; lab -a code -v -t 100 -L"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/briandela/therealyou.git"
+  },
+  "keywords": [
+    "hapi",
+    "plugin",
+    "hapi-plugin",
+    "hapi.js",
+    "https",
+    "X-Forwarded-For",
+    "X-Forwarded-Port"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/briandela/therealyou/issues"
+  },
+  "homepage": "https://github.com/briandela/therealyou",
+  "devDependencies": {
+    "code": "^2.1.0",
+    "coveralls": "^2.11.6",
+    "hapi": "^11.1.4",
+    "lab": "^8.0.2"
+  }
+}
