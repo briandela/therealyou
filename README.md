@@ -1,6 +1,6 @@
 # therealyou
 
-[![Build Status](https://travis-ci.org/briandela/therealyou.svg?branch=master)](https://travis-ci.org/briandela/therealyou) [![Coverage Status](https://img.shields.io/coveralls/briandela/therealyou.svg)](https://coveralls.io/r/briandela/therealyou) [![npm version](https://badge.fury.io/js/therealyou.svg)](http://badge.fury.io/js/therealyou) [![Dependencies Up To Date](https://david-dm.org/briandela/therealyou.svg?style=flat)](https://david-dm.org/briandela/therealyou)
+[![Build Status](https://travis-ci.org/briandela/therealyou.svg?branch=master)](https://travis-ci.org/briandela/therealyou) [![Coverage Status](https://coveralls.io/repos/briandela/therealyou/badge.svg?branch=master&service=github)](https://coveralls.io/github/briandela/therealyou?branch=master) [![npm version](https://badge.fury.io/js/therealyou.svg)](http://badge.fury.io/js/therealyou) [![Dependencies Up To Date](https://david-dm.org/briandela/therealyou.svg?style=flat)](https://david-dm.org/briandela/therealyou)
 
 hapi.js plugin for setting the `request.info.remoteAddress` and `request.info.remotePort` based on the X-Forwarded-For and X-Forwarded-Port headers
 
