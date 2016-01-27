@@ -10,10 +10,9 @@ const describe = lab.describe;
 const it = lab.it;
 const before = lab.before;
 
-
 describe('x-forwarded-for', function () {
 
-    var server;
+    let server;
 
     before(function (done) {
 
@@ -89,7 +88,7 @@ describe('x-forwarded-for', function () {
 
 describe('x-forwarded-port', function () {
 
-    var server;
+    let server;
 
     before(function (done) {
 
