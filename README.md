@@ -46,10 +46,6 @@ server.register(require('therealyou'), function (err) {
 });
 ```
 
-## Acknowledgements
-
-`therealyou` is sponsored by [nearForm](http://nearform.com).
-
 ## License
 
 MIT
