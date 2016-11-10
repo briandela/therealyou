@@ -26,14 +26,15 @@
     "url": "https://github.com/briandela/therealyou/issues"
   },
   "pre-commit": [
-    "test"
+    "test",
+    "lint"
   ],
   "homepage": "https://github.com/briandela/therealyou",
   "devDependencies": {
-    "code": "^2.1.0",
-    "coveralls": "^2.11.6",
-    "hapi": "^11.1.4",
-    "lab": "^8.2.0",
-    "pre-commit": "^1.1.2"
+    "code": "^4.0.0",
+    "coveralls": "^2.11.14",
+    "hapi": "^15.2.0",
+    "lab": "^11.2.0",
+    "pre-commit": "^1.1.3"
   }
 }
