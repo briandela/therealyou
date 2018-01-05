@@ -31,10 +31,10 @@
   ],
   "homepage": "https://github.com/briandela/therealyou",
   "devDependencies": {
-    "code": "^4.0.0",
-    "coveralls": "^2.11.14",
+    "code": "",
+    "coveralls": "",
     "hapi": "^17",
-    "lab": "^11.2.0",
+    "lab": "",
     "pre-commit": "^1.1.3"
   }
 }
