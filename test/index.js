@@ -20,13 +20,13 @@ describe('x-forwarded-for', () => {
             .register({
                 plugin: require('..')
             })
-            .then(_ => {
+            .then(() => {
                 server.start();
             });
         server.route({
             method: 'GET',
             path: '/',
-            handler: function(request, h) {
+            handler: function (request) {
                 return request.info.remoteAddress;
             }
         });
@@ -82,13 +82,13 @@ describe('x-forwarded-port', () => {
             .register({
                 plugin: require('..')
             })
-            .then(_ => {
+            .then(() => {
                 server.start();
             });
         server.route({
             method: 'GET',
             path: '/',
-            handler: function(request, h) {
+            handler: function (request) {
                 return request.info.remoteAddress;
             }
         });
