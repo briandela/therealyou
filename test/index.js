@@ -89,7 +89,7 @@ describe('x-forwarded-port', () => {
             method: 'GET',
             path: '/',
             handler: function (request) {
-                return request.info.remoteAddress;
+                return request.info.remotePort;
             }
         });
     });
@@ -104,7 +104,7 @@ describe('x-forwarded-port', () => {
         };
         const res = await server.inject(requestOptions);
         expect(res.statusCode).to.equal(200);
-        expect(res.request.info.remotePort).to.equal('3781');
+        expect(res.result).to.equal('3781');
     });
 
     it('does not change request.info.remotePort if there is no x-forwarded-port', async () => {
@@ -114,8 +114,7 @@ describe('x-forwarded-port', () => {
         };
 
         const res = await server.inject(requestOptions);
-
         expect(res.statusCode).to.equal(200);
-        expect(res.request.info.remotePort).to.be.equal('');
+        expect(res.result).to.be.equal('');
     });
 });

@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "author": "Brian Delahunty <brian@briandela.com>",
   "scripts": {
-    "test": "lab -r lcov | node ./node_modules/coveralls/bin/coveralls.js lab -a code -v -t 100 -L",
+    "test": "lab -r lcov | node ./node_modules/coveralls/bin/coveralls.js | lab -a code -v -t 100 -L",
     "lint": "lab -L -d"
   },
   "repository": {
