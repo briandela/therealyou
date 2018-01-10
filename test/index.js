@@ -4,35 +4,35 @@ const Lab = require('lab');
 const Hapi = require('hapi');
 const Code = require('code');
 
-const lab = exports.lab = Lab.script();
+const lab = (exports.lab = Lab.script());
 const expect = Code.expect;
 const describe = lab.describe;
 const it = lab.it;
 const before = lab.before;
 
-describe('x-forwarded-for', function () {
-
+describe('x-forwarded-for', () => {
     let server;
 
-    before(function (done) {
-
+    before(() => {
         server = new Hapi.Server();
-        server.connection();
 
+        server
+            .register({
+                plugin: require('..')
+            })
+            .then(() => {
+                server.start();
+            });
         server.route({
             method: 'GET',
             path: '/',
-            handler: function (request, reply) {
-
-                return reply(request.info.remoteAddress);
+            handler: function (request) {
+                return request.info.remoteAddress;
             }
         });
-
-        server.register(require('..'), done);
     });
 
-    it('sets request.info.remoteAddress to the first value of x-forwarded-for', function (done) {
-
+    it('sets request.info.remoteAddress to the first value of x-forwarded-for', async () => {
         const requestOptions = {
             method: 'GET',
             url: '/',
@@ -41,17 +41,12 @@ describe('x-forwarded-for', function () {
             }
         };
 
-        server.inject(requestOptions, function (res) {
-
-            expect(res.statusCode).to.equal(200);
-            expect(res.result).to.equal('192.16.184.0');
-
-            done();
-        });
+        const res = await server.inject(requestOptions);
+        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.equal('192.16.184.0');
     });
 
-    it('works when there are multiple addresses in x-forwarded-for', function (done) {
-
+    it('works when there are multiple addresses in x-forwarded-for', async () => {
         const requestOptions = {
             method: 'GET',
             url: '/',
@@ -60,55 +55,46 @@ describe('x-forwarded-for', function () {
             }
         };
 
-        server.inject(requestOptions, function (res) {
-
-            expect(res.statusCode).to.equal(200);
-            expect(res.result).to.equal('192.16.184.5');
-
-            done();
-        });
+        const res = await server.inject(requestOptions);
+        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.equal('192.16.184.5');
     });
 
-    it('does not change request.info.remoteAddress if there is no x-forwarded-for', function (done) {
-
+    it('does not change request.info.remoteAddress if there is no x-forwarded-for', async () => {
         const requestOptions = {
             method: 'GET',
             url: '/'
         };
 
-        server.inject(requestOptions, function (res) {
-
-            expect(res.statusCode).to.equal(200);
-            expect(res.result).to.equal('127.0.0.1');
-
-            done();
-        });
+        const res = await server.inject(requestOptions);
+        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.equal('127.0.0.1');
     });
 });
 
-describe('x-forwarded-port', function () {
-
+describe('x-forwarded-port', () => {
     let server;
 
-    before(function (done) {
-
+    before(() => {
         server = new Hapi.Server();
-        server.connection();
 
+        server
+            .register({
+                plugin: require('..')
+            })
+            .then(() => {
+                server.start();
+            });
         server.route({
             method: 'GET',
             path: '/',
-            handler: function (request, reply) {
-
-                return reply(request.info.remotePort);
+            handler: function (request) {
+                return request.info.remotePort;
             }
         });
-
-        server.register(require('..'), done);
     });
 
-    it('sets request.info.remotePort to the value of x-forwarded-for', function (done) {
-
+    it('sets request.info.remotePort to the value of x-forwarded-for', async () => {
         const requestOptions = {
             method: 'GET',
             url: '/',
@@ -116,29 +102,19 @@ describe('x-forwarded-port', function () {
                 'x-forwarded-port': '3781'
             }
         };
-
-        server.inject(requestOptions, function (res) {
-
-            expect(res.statusCode).to.equal(200);
-            expect(res.result).to.equal('3781');
-
-            done();
-        });
+        const res = await server.inject(requestOptions);
+        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.equal('3781');
     });
 
-    it('does not change request.info.remotePort if there is no x-forwarded-port', function (done) {
-
+    it('does not change request.info.remotePort if there is no x-forwarded-port', async () => {
         const requestOptions = {
             method: 'GET',
             url: '/'
         };
 
-        server.inject(requestOptions, function (res) {
-
-            expect(res.statusCode).to.equal(200);
-            expect(res.result).to.be.null();
-
-            done();
-        });
+        const res = await server.inject(requestOptions);
+        expect(res.statusCode).to.equal(200);
+        expect(res.result).to.be.equal('');
     });
 });

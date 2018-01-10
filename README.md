@@ -31,19 +31,21 @@ This plugin sets `request.info.remotePort` to the value of the `x-forwarded-port
 ### Usage
 
 ``` javascript
-const Hapi = require('hapi');
-
-const server = new Hapi.Server();
-server.connection();
-
-server.register(require('therealyou'), function (err) {
-
-    // Assuming no err, start server
-
-    server.start(function () {
-        // ..
-    });
-});
+const Hapi = require("hapi"); 
+ 
+const server = new Hapi.Server({   
+  host: 'localhost', 
+  port: 3000 
+}) 
+ 
+ 
+server.register({ 
+  plugin: require('./lib') 
+}).then(_=>{ 
+  server.start(function() { 
+      console.log("up"); 
+    }); 
+}) 
 ```
 
 ## License
