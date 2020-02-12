@@ -33,7 +33,7 @@
   "devDependencies": {
     "code": "5.1.2",
     "coveralls": "^3.0.0",
-    "hapi": "^19",
+    "hapi": "^19.0.5",
     "lab": "15",
     "pre-commit": "^1.1.3"
   }
