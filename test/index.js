@@ -1,8 +1,6 @@
-'use strict';
-
-const Lab = require('lab');
-const Hapi = require('hapi');
-const Code = require('code');
+const Lab = require('@hapi/lab');
+const Hapi = require('@hapi/hapi');
+const Code = require('@hapi/code');
 
 const lab = (exports.lab = Lab.script());
 const expect = Code.expect;
@@ -114,7 +112,7 @@ describe('x-forwarded-port', () => {
         };
 
         const res = await server.inject(requestOptions);
-        expect(res.statusCode).to.equal(200);
-        expect(res.result).to.be.equal('');
+        expect(res.statusCode).to.equal(204);
+        expect(res.result).to.be.equal(null);
     });
 });
